@@ -1,1 +1,133 @@
-
+package Ass1;
+import java.util.*;
+public class Ass1Demo
+{
+	static public int findMax(int a[])
+	{   
+		int max=a[0];
+		for(int i=1;i<a.length;i++)
+		{
+			if(max<a[i])
+			{
+				max=a[i];
+			}
+		}
+		return max;
+	}
+	static public String findMaxMinEven(int a[])
+	{
+		int ass=a[0];
+		for(int i=0;i<a.length;i++)
+		{
+			if(a[i]%2==0)
+			{
+				ass=a[i];
+				break;
+			}
+		}
+		int maxEven=ass,minEven=ass;
+		for(int i=0;i<a.length;i++)
+		{
+			if(a[i]%2==0)
+			{
+				if(a[i]>maxEven)
+			        maxEven=a[i];
+				if(a[i]<minEven)
+				
+					minEven=a[i];
+			}
+		}
+		return "["+maxEven+","+minEven+"]";
+	}
+	static public void rotateLeft(int a[],int k)
+	{
+		while(k!=0)
+		{
+			int temp=a[0];
+			for(int i=0;i<a.length-1;i++)
+			{
+				a[i]=a[i+1];
+				
+			}
+			a[a.length-1]=temp;
+			k--;
+		}
+		
+	}
+	static public void rotateRight(int a[],int k)
+	{
+		while(k!=0)
+		{
+			int temp=a[a.length-1];
+			for(int i=a.length-1;i>0;i--)
+				a[i]=a[i-1];
+			a[0]=temp;
+			k--;
+		}
+			
+	}
+	static void display(int a[])
+	{
+	    System.out.print("Elements are::");
+		for(int i=0;i<a.length;i++)
+		{
+		    System.out.print("\t"+a[i]+"\t");	
+		}
+	}
+	public static int sum(int a[])
+	{
+		int sum=0;
+		for(int i=0;i<a.length;i++)
+		{
+			sum+=a[i];
+		}
+		return sum;
+	}
+	public static void findDuplicate(int a[])
+	{
+		
+		for(int i=0;i<a.length;i++)
+		{
+			
+			for(int j=i+1;j<a.length;j++)
+			{
+				if(a[i]==a[j])
+				{
+					System.out.println(a[i]);
+					break;
+				}
+			}
+		}
+	}
+	
+    public static void main(String args[])
+    {
+    
+    	int arr[]= {1,2,5,2,16,9};
+    	System.out.println("Maximum element::"+findMax(arr));
+    	System.out.println("Maximum and minimum even no.  ::"+findMaxMinEven(arr));
+    	System.out.println("Enter no of rotation::");
+    	Scanner sc=new Scanner(System.in);
+    	int k=sc.nextInt();
+    	System.out.println("****************Before rotation****************");
+    	display(arr);
+    	rotateLeft(arr,k);
+    	System.out.println("\n--------After Rotating left by " +k+"----------");
+    	display(arr);
+    	System.out.println("\n---------------------------------------------");
+    	rotateRight(arr,k);
+    	System.out.println("--------After Rotating right by  " +k+"----------");
+    	display(arr);
+    	System.out.println("\n---------------------------------------------");
+    	
+    	System.out.println("Sum of elements::"+sum(arr));
+    	
+    	System.out.println("NO. having duplicates are::");
+    	findDuplicate(arr);
+    	
+    	
+    	//System.out.println("Rotate right::"+);
+    	
+    	
+    }
+}
