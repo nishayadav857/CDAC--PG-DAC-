@@ -1,1 +1,33 @@
+﻿Assignments
+*********************************************************************************
 
+Question 1::
+*********************************************************************************
+ Create linked list of a given size where the data consists of multiples of 5 starting from 5.
+main should have following methods
+1. createLinkedList(int)
+2. display linkedlist
+
+QUESTION 2::
+***********************************************************************************
+Use same linked list and add following methods. Implement menu driven program for this.
+1. createLinkedList(int);
+2. display();
+3. addNodeBeg(int);
+4. addNodeEnd(int);
+5. printFirstNode();
+6. printLastNode();
+7. size
+8. modify(according to data)
+9. modify(according to position).
+10. Delete First.
+11. Count Node.
+Question 3::
+**************************************************************************************
+Create Linked list of string with following options.
+1. createLinkedList(int);
+2. Insert.
+3.Delete
+4. Display
+5. Modify
+6. contains (which will return true or false).
