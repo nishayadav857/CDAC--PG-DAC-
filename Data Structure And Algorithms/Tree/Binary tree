@@ -1,1 +1,168 @@
+///////BINARY TREE NODE\\\\\\\\\\\\\\\\
+package Ass1;
+
+public class BinaryTreeNode 
+{
+    int data;
+    BinaryTreeNode left,right;
+    public BinaryTreeNode()
+    {
+    	data=0;
+    	left=right=null;
+    }
+    public BinaryTreeNode(int d)
+    {
+    	data=d;
+    	left=right=null;
+    }
+    public String toString()
+    {
+    	return data+" ";
+    }
+    
+}
+//////////////////////BINARY TREE LIST\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+package Ass1;
+import java.util.*;
+public class BinaryTreeList 
+{
+   BinaryTreeNode root;
+   public BinaryTreeList()
+   {
+	   root =null;
+   }
+   public void createTree(int no)
+   {
+	   Scanner sc=new Scanner(System.in);
+	   for(int i=0;i<no;i++)
+	   {   
+		 int data;
+	     System.out.println("*******************************************************************************");
+	     System.out.print("Enter data::");
+	    
+	     data=sc.nextInt();
+	    
+	     addNode(data);
+	   }
+    }
+   public void addNode(int data)
+   {
+	   Scanner sc=new Scanner(System.in);
+	  BinaryTreeNode n1=new BinaryTreeNode(data);
+	  if(root==null)  //there is no node in a tree...
+		  root=n1;
+	  else
+	  {
+		  BinaryTreeNode move=root;
+		  
+		 
+		  while(true)
+		  {
+			  System.out.print("Where u want to insert in left or right of "+move.data+" (left/right)::");
+			  
+			  String str=sc.next();
+		      if(str.equalsIgnoreCase("left"))
+		      {
+			  //check in left node is available or not....
+			  //otherwise go until it doesn't found the left vacant...
+			       if(move.left==null)
+			      {
+				      move.left=n1;
+				      break;
+			      }
+			      else
+				      move=move.left;
+		      }
+		      if(str.equalsIgnoreCase("right"))
+		      {
+		    	 
+		    		  if(move.right==null)
+		    		  {
+		    			  move.right=n1;
+		    			  break;
+		    		  }
+		    		else
+		    		  move=move.right;
+		    	  }
+		      }
+		       
+		  
+			  
+      }
+   }
+   public void display()
+   {
+	   System.out.println("***************INORDER******************");
+	   inOrder(root);
+	   System.out.print("\n***************PREORDER******************");
+	   System.out.println("\n");
+	   preOrder(root);
+	   System.out.println("\n");
+	   System.out.print("\n***************POSTORDER******************");
+	   System.out.println("\n");
+	   postOrder(root);
+	   
+   }
+   public void inOrder(BinaryTreeNode move)
+   {
+	  if(move!=null)
+	  {
+	    inOrder(move.left);
+	    System.out.print(move.data+" ");
+	    inOrder(move.right);
+	  }
+   }
+   public void preOrder(BinaryTreeNode move)
+   {
+	  if(move!=null)
+	  {
+		System.out.print(move.data+" ");
+	    preOrder(move.left);
+	  
+	    preOrder(move.right);
+	  }
+   }
+   public void postOrder(BinaryTreeNode move)
+   {
+	  if(move!=null)
+	  {
+	    postOrder(move.left);
+	    
+	    postOrder(move.right);
+	    System.out.print(move.data+" ");
+	  }
+   }
+}
+
+/////////////ASS1DEMO\\\\\\\\\\\\\\\\\\\
+package Ass1;
+import java.util.*;
+public class Ass1Demo
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int data,ch;
+		BinaryTreeList tree1=new BinaryTreeList();
+		do
+		{
+			System.out.println("\n\t1. Add Node\n\t2. Display\n\t Enter Your Choice:: ");
+			ch=sc.nextInt();
+			switch(ch)
+			{
+			case 1:
+				System.out.println(" Enter No.of nodes:: ");
+				data=sc.nextInt();
+				tree1.createTree(data);
+				tree1.display();
+				break;
+			case 2:
+				tree1.display();
+				break;
+			}
+		}while(ch!=0);
+			
+	}
+}
+
+
 
