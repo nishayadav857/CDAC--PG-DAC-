@@ -1,1 +1,208 @@
+**********************************BINARYSEARCH NODE********************************************
+package Ass2;
+public class BinarySearchNode {
+	int data;
+    BinarySearchNode left,right;
+    public BinarySearchNode()
+    {
+    	data=0;
+    	left=right=null;
+    }
+    public BinarySearchNode(int d)
+    {
+    	data=d;
+    	left=right=null;
+    }
+    public String toString()
+    {
+    	return data+" ";
+    }
+    
+
+}
+**********************************BINARYTREENODE********************************************
+ackage Ass2;
+
+import java.util.Scanner;
+
+import Ass1.BinaryTreeNode;
+
+public class BinarySearchTree {
+	   BinarySearchNode root;
+	   public BinarySearchTree()
+	   {
+		   root =null;
+	   }
+	   public void createTree(int no)
+	   {
+		   Scanner sc=new Scanner(System.in);
+		   for(int i=0;i<no;i++)
+		   {   
+			 int data;
+		     System.out.println("*******************************************************************************");
+		     System.out.print("Enter data::");
+		    
+		     data=sc.nextInt();
+		    
+		     addNode(data);
+		   }
+	    }
+	   public void addNode(int data)
+	   {
+		   Scanner sc=new Scanner(System.in);
+		  BinarySearchNode n1=new BinarySearchNode(data);
+		  if(root==null)  //there is no node in a tree...
+			  root=n1;
+		  else
+		  {
+			 BinarySearchNode move=root;
+			  
+			 
+			  while(true)
+			  {
+				  
+			       if(n1.data<move.data)
+				  //check in left node is available or not....
+				  //otherwise go until it doesn't found the left vacant...
+			       {
+				       if(move.left==null)
+				      {
+					      move.left=n1;
+					      System.out.println("Node inserted at left of "+move.data);
+					      break;
+				      }
+				      else
+					      move=move.left;
+			       }
+			       else if(n1.data>move.data)
+			       {
+			    		  if(move.right==null)
+			    		  {
+			    			  move.right=n1;
+			    			  System.out.println("Element inserted at right of "+move.data);
+			    			  break;
+			    		  }
+			    		else
+			    		  move=move.right;
+			    	  }
+			 
+			  }
+			      
+	      }
+	   }
+	   public boolean search(int key)
+	   {
+		   boolean flag=false;
+		   if(root.data==key)
+		   {
+			   flag=true;
+			   return flag;
+		   }
+		   BinarySearchNode move=root;
+		   while(move!=null)
+		   {
+			   if(key>move.data)
+				   move=move.right;
+			   else if(key<move.data)
+				   move=move.left;
+			   else
+			   {
+				   flag=true;
+				   break;
+			   }
+		   }
+		   return flag;
+	   }
+	   public void display()
+	   {
+		   System.out.println("***************INORDER******************");
+		   System.out.println("\n");
+		   inOrder(root);
+		   System.out.println("\n");
+		   System.out.print("\n***************PREORDER******************");
+		   System.out.println("\n");
+		   preOrder(root);
+		   System.out.println("\n");
+		   System.out.print("\n***************POSTORDER******************");
+		   System.out.println("\n");
+		   postOrder(root);
+		   
+	   }
+	   public void inOrder(BinarySearchNode move)
+	   {
+		  if(move!=null)
+		  {
+		    inOrder(move.left);
+		    System.out.print(move.data+" ");
+		    inOrder(move.right);
+		  }
+	   }
+	   public void preOrder(BinarySearchNode move)
+	   {
+		  if(move!=null)
+		  {
+			System.out.print(move.data+" ");
+		    preOrder(move.left);
+		  
+		    preOrder(move.right);
+		  }
+	   }
+	   public void postOrder(BinarySearchNode move)
+	   {
+		  if(move!=null)
+		  {
+		    postOrder(move.left);
+		    
+		    postOrder(move.right);
+		    System.out.print(move.data+" ");
+		  }
+	   }
+}
+**********************************ASS2DDEMO********************************************
+package Ass2;
+
+import java.util.Scanner;
+
+
+
+public class Ass2Demo 
+{
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int data,ch;
+		BinarySearchTree tree1=new BinarySearchTree();
+		do
+		{
+			System.out.println("\n\t1. Add Node\n\t2. Display\n\t3. Searching\n\t Enter Your Choice:: ");
+			ch=sc.nextInt();
+			switch(ch)
+			{
+			case 1:
+				System.out.println(" Enter No.of nodes:: ");
+				data=sc.nextInt();
+				tree1.createTree(data);
+				tree1.display();
+				break;
+			case 2:
+			{
+				tree1.display();
+				break;
+			}
+			case 3:
+			{
+				int key;
+				System.out.println("Enter element u want to find::");
+				key=sc.nextInt();
+			    if(tree1.search(key))
+			    	System.out.println("Element found!!!!!!");
+			    else
+			    	System.out.println("Element not found!!!!!!!");
+			}
+			
+		   }
+			
+		}while(ch!=0);
+			
+	}
+}
 
